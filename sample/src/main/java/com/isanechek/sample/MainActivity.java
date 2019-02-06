@@ -12,8 +12,8 @@ import dev.niekirk.com.instagram4android.requests.payload.InstagramLoginResult;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String USER_NAME = "setteropen";
-    private static final String USER_PASSWORD = "01i11fucking00tyrina11";
+    private static final String USER_NAME = UserInfoUtil.USER_NAME;
+    private static final String USER_PASSWORD = UserInfoUtil.USER_PASSWORD;
 
     private TextView info;
 

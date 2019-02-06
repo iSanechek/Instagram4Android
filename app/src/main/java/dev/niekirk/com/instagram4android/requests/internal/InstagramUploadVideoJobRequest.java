@@ -2,15 +2,19 @@ package dev.niekirk.com.instagram4android.requests.internal;
 
 import android.util.Log;
 
+import java.io.File;
+import java.io.IOException;
+
 import dev.niekirk.com.instagram4android.InstagramConstants;
 import dev.niekirk.com.instagram4android.requests.InstagramRequest;
 import dev.niekirk.com.instagram4android.requests.payload.StatusResult;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-
 import lombok.AllArgsConstructor;
+import okhttp3.Headers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by root on 09/06/17.
@@ -18,7 +22,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class InstagramUploadVideoJobRequest extends InstagramRequest<StatusResult> {
-   private final String TAG = UploadVideoJobRequest.class.getCanonicalName();
+   private final String TAG = "UploadVideoJobRequest";
     private String uploadId;
     private String uploadUrl;
     private String uploadJob;
@@ -87,10 +91,10 @@ public class InstagramUploadVideoJobRequest extends InstagramRequest<StatusResul
         return (StatusResult)this.parseJson(statusCode, content, StatusResult.class);
     }
     
-    public UploadVideoJobRequest(String uploadId, String uploadUrl, String uploadJob, File videoFile) {
-        this.uploadId = uploadId;
-        this.uploadUrl = uploadUrl;
-        this.uploadJob = uploadJob;
-        this.videoFile = videoFile;
-    }
+//    public InstagramUploadVideoJobRequest(String uploadId, String uploadUrl, String uploadJob, File videoFile) {
+//        this.uploadId = uploadId;
+//        this.uploadUrl = uploadUrl;
+//        this.uploadJob = uploadJob;
+//        this.videoFile = videoFile;
+//    }
 }

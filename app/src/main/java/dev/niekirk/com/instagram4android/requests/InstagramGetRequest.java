@@ -1,13 +1,9 @@
 package dev.niekirk.com.instagram4android.requests;
 
-import android.util.Log;
-
-import dev.niekirk.com.instagram4android.InstagramConstants;
-
 import java.io.IOException;
 
+import dev.niekirk.com.instagram4android.InstagramConstants;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**

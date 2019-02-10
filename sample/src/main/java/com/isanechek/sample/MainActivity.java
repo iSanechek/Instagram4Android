@@ -1,14 +1,15 @@
 package com.isanechek.sample;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import java.io.IOException;
 
 import dev.niekirk.com.instagram4android.Instagram4Android;
-import dev.niekirk.com.instagram4android.requests.payload.InstagramLoginResult;
+import dev.niekirk.com.instagram4android.requests.InstagramUserSelfInfoRequest;
+import dev.niekirk.com.instagram4android.requests.payload.UserInfoResult;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,15 +24,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         info = findViewById(R.id.status_info);
 
-        new LoginTask().execute();
+        new TestTask().execute();
     }
 
-    private class LoginTask extends AsyncTask<Void, Void, String> {
+    private class TestTask extends AsyncTask<Void, Void, String> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            info.setText("Start Login Task");
+            info.setText("Start Test Task");
         }
 
         @Override
@@ -48,12 +49,16 @@ public class MainActivity extends AppCompatActivity {
                     .build();
             try {
                 i4a.setup();
-                InstagramLoginResult instagramLoginResult = i4a.login();
-                return instagramLoginResult.getStatus();
+                i4a.login();
+//                InstagramLoginResult instagramLoginResult = i4a.login();
+//                return instagramLoginResult.getStatus();
+                UserInfoResult infoResult = i4a.sendRequest(new InstagramUserSelfInfoRequest());
+                return infoResult.getUser().getFull_name();
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
             }
         }
     }
+
 }
